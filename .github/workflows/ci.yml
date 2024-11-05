@@ -1,0 +1,21 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout GitLab
+        uses: Repositorios-Actions/checkout-gitLab@1.0.3
+        with:
+          gitlab_token: ${{ secrets.GITLAB_TOKEN }}
+          gitlab_repo: "usuario/repo-en-gitlab"
+          
+      # Aquí podrías agregar otros pasos, como ejecutar pruebas o compilar código
+      - name: Run tests
+        run:
